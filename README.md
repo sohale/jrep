@@ -13,7 +13,7 @@ Docker version available
 * bash
 ```bash
   find / | \
-      node -e $(curl -L https://raw.githubusercontent.com/sohale/jrep/main/src/jrep.js) \
+      node -e "$(curl -L https://raw.githubusercontent.com/sohale/jrep/main/src/jrep.js)" '' \
          '/\/([^\/]*\.py)$/.exec(x)[1]'
 ```
  * requires NodeJS (tested on node 12) to beinstalled on your system.
