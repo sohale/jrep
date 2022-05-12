@@ -21,7 +21,7 @@ cat s1-log.log | \
 */
 
 const fs = require("fs"), util = require("util");
-const ERR_EXCEPTIONS = process.env('ERR_EXCEPTIONS'), DEBUG_ARGS = process.env('DEBUG_ARGS');
+const ERR_EXCEPTIONS = process.env['ERR_EXCEPTIONS'], DEBUG_ARGS = process.env['DEBUG_ARGS'];
 
 const [_,__,...maps] = process.argv;
 const mapsf = maps.map( exprStr => (x => eval('x=>'+exprStr)(x) ) );
