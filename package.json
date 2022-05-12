@@ -1,0 +1,10 @@
+{
+  "name": "jrep",
+  "version": "1.0.0",
+  "description": "A new generation grep written in node/javascript.",
+  "main": "src/index..js",
+  "repository": "git@github.com:sohale/jrep.git",
+  "author": "Sohail Siadatnejad <sohale@gmail.com>",
+  "license": "GPL",
+  "private": false
+}
