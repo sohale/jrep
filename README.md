@@ -10,6 +10,10 @@ Usage: `jrep.js  <filter1>  <filter2> ...`
 * The <filter>s are applied sequentially on each line in the piped content.
 * In case of exception in any of the <filter>s, that line is removed.
 
+## 🤝
+* 👋 Feel free to send Pull Requests.
+* 👋 Feel free to request features.
+
 #### Pros 👍
 * very quickly implemment custom and complex logic
 * concise
@@ -17,18 +21,17 @@ Usage: `jrep.js  <filter1>  <filter2> ...`
 * Docker version available
 #### Cons 👎
 * Needs `node` installed on the system. If you dno't want to install node, an alternative is to use `docker`.
+#### requirements
+* NodeJS (tested on node 12)
 
-* 👋 Feel free to send Pull Requests.
-* 👋 Feel free to request features.
 
 
-### Installtion
-* installation
+### Installation
+* MacOS , Linux
 ```bash
   git clone https://github.com/sohale/jrep.git
   ./jrep/scripts/install-macos.bash
 ```
- * requirement: NodeJS (tested on node 12)
 
 ### Test
 ```bash
