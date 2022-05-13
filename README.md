@@ -11,7 +11,8 @@ Think of `awk` & `sed` with javascript syntax.
 Very useful for bash scripting and devops works.
 Very handy and extermly flexible.
 
-## Usage
+<!-- 🧤 🧰 ☘️ -->
+## 🧤 Usage
 
 > `jrep`   \<filter1\>   \<filter2\> ...
 
@@ -22,12 +23,20 @@ Very handy and extermly flexible.
 * The <filter>s are applied sequentially on each line in the piped content.
 * In case of exception in any of the <filter>s, that line is removed.
 
+### 🎩 Built-in primitives
+<!-- ### **RE** -->
+<!-- [^1] -->
+
+| primitive      :| usage |
+| ----------- | ----------- |
+| ⭐️ RE       | `RE(`  \<regular expression with parentheses\>  `)`       |
+|    |        |
 ### ⌨️ Example
 ```bash
 uname -a | jrep 'x.replace(/a/g, "O")'
 ```
 
-#### Practical examples
+#### ⛑ Practical examples
 * Extract *pid*s <br/>
 `ps aux|jrep 'x.substring(12,24)'`
 * Extract the filenames in a find command:
@@ -48,7 +57,14 @@ ps aux|jrep "{time=x.substring(70,78); pid=x.substring(15,24); return time + ':'
 ```bash
 uname -a | jrep 'x.replace(/[a-z]/g, "🐸")'
 ```
+* Using **built-in primitives**. The following three are equivalent
+```bash
+ps aux | jrep 'RE("(.*python.*)")'
+ps aux | jrep '/(.*python.*)/.exec(x)[1]'
+ps aux | grep -e python
+```
 
+### f
 **Find jrep on npm: [jrep1](https://www.npmjs.com/package/jrep1)**
 
 ### Some suggested use cases
