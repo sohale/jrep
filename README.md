@@ -26,7 +26,7 @@ Usage: `jrep.js  <filter1>  <filter2> ...`
 
 
 
-### Installation
+## Installation
 * MacOS , Linux
 ```bash
   git clone https://github.com/sohale/jrep.git
@@ -38,7 +38,7 @@ Usage: `jrep.js  <filter1>  <filter2> ...`
   test/e2e-test.bash
 ```
 
-### Example Usage
+## Example Usage
 Also see [test/e2e-test.bash]
 
 * bash (on the fly)
@@ -70,7 +70,7 @@ npm install -g jrep
 yarn install -g jrep
 ```
 
-### Tutorial
+## Tutorial
 (comming soon)
 ### Also see
 *  [njf (neat jsfilter)](https://github.com/sohale/snippets/blob/master/javascript/neat-jsfilter.js)
