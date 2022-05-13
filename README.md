@@ -44,9 +44,9 @@ uname -a | jrep 'x.replace("a", "O")'
   ./jrep/scripts/install-macos.bash
 ```
 ### Development
-[docs/internals.md]
+[docs/internals.md](docs/internals.md)
 ## Example Usage
-Also see [test/e2e-test.bash]
+Also see [test/e2e-test.bash](test/e2e-test.bash)
 
 * bash (on the fly)
 ```bash
@@ -70,7 +70,7 @@ No need to install Node
 uname -a | npx jrep 'x.replace("a", "O")'
 ```
 
-* npm [https://www.npmjs.com/package/jrep1]
+* npm [jrep1 on npm](https://www.npmjs.com/package/jrep1)
 ```bash
 npm install -g jrep
 ```
