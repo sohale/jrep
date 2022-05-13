@@ -22,9 +22,9 @@ Very handy and extermly flexible.
 * The <filter>s are applied sequentially on each line in the piped content.
 * In case of exception in any of the <filter>s, that line is removed.
 
-### ⌨️ Example:
+### ⌨️ Example
 ```bash
-uname -a | jrep 'x.replace("a", "O")'
+uname -a | jrep 'x.replace(/a/g, "O")'
 ```
 
 #### Practical examples
