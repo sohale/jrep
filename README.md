@@ -50,7 +50,7 @@ uname -a | jrep 'x.replace("a", "O")'
   test/e2e-test.bash
 
 ```
-* apply latest development changes into `jrep` command
+* apply latest local development changes into `jrep` command. In fact, just created a symbolic link to your local folder.
 ```bash
   npm i -g
 ```
