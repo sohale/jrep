@@ -1,5 +1,5 @@
 
-Usage: jrep.js  <filter1>  <filter2> ...
+Usage: `jrep.js  <filter1>  <filter2> ...`
 
 * Each <filter> is a map, (a string transformation), a javascript function with arg `x`..
 * The <filter>s are applied sequentially on each line in the piped content.
