@@ -20,7 +20,13 @@ jrep  <filter1>  <filter2> ...
 * The <filter>s are applied sequentially on each line in the piped content.
 * In case of exception in any of the <filter>s, that line is removed.
 
-**Find jrep1 on npm: [jrep1](https://www.npmjs.com/package/jrep1)**
+### ⌨️ Example:
+```bash
+uname -a | jrep 'x.replace("a", "O")'
+```
+
+
+**Find jrep on npm: [jrep1](https://www.npmjs.com/package/jrep1)**
 ## 🤝
 * 👋 Feel free to send Pull Requests.
 * 👋 Feel free to request features.
