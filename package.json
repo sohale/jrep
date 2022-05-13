@@ -6,6 +6,10 @@
   "bin": {
     "jrep": "src/jrep.js"
   },
+  "scripts": {
+    "test": "test/e2e-test.bash"
+  },
+  "keywords": ["grep", "awk", "sed", "linux", "scripting", "bash"],
   "repository": "git@github.com:sohale/jrep.git",
   "author": "Sohail Siadatnejad <sohale@gmail.com>",
   "license": "GPL",
