@@ -30,7 +30,7 @@ Very handy and extermly flexible.
 | primitive      |meaning| usage |
 | ----------- |----| ----------- |
 | ✨ RE ✨     |find/replace regexp| `RE(`  \<regular expression with parentheses\>  `)`       |
-| ✨ RER ✨    |find + custom replace| `RER(`  regexp. `,` a string with `p[1]`,`$p[2]`, ...   `)`       |
+| ✨ RER ✨    |find + custom replace| `RER(`  regexp. `,` a string with `p[1]`,`p[2]`, ...   `)`       |
 |             ||        |
 ### ⌨️ Example
 ```bash
@@ -64,13 +64,18 @@ ps aux | jrep 'RE("(.*python.*)")'
 ps aux | jrep '/(.*python.*)/.exec(x)[1]'
 ps aux | grep -e python
 ```
+* Using ✨ **built-in primitive** RER ✨. Replace `python` in filenames with emojies.
+```bash
+find .. | jrep 'RER("(.*)python(.*)", "p[1]+\"🐍🐍\"+p[2]")'
+```
 
-### f
-**Find jrep on npm: [jrep1](https://www.npmjs.com/package/jrep1)**
+### 🐻 Find jrep on npm: [jrep1](https://www.npmjs.com/package/jrep1)**
 
 ### Some suggested use cases
 * Eliminate usage of obscure aommands such as `awk`, `sed`, `perl`
 * Unified solution without usual tools `cut`, `grep`
+* Replace a matched regular expression with given custom ccombination (See `RER`)
+* Extract part of an RE pattern (See `RE`)
 
 ## 🤝
 * 👋 Feel free to send Pull Requests.
