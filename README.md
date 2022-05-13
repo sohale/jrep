@@ -1,4 +1,9 @@
 # jrep
+[![Version](https://img.shields.io/npm/v/jrep1.svg)](https://npmjs.org/package/jrep)
+[![CircleCI](https://circleci.com/gh/sohale/jrep/tree/main.svg?style=shield)](https://circleci.com/gh/sohale/jrep/tree/main)
+[![Downloads/week](https://img.shields.io/npm/dw/jrep.svg)](https://www.npmjs.com/package/jrep1)
+[![License](https://img.shields.io/npm/l/jrep1.svg)](https://github.com/sohale/jrep/blob/main/package.json)
+
 A new generation `grep` written in node/javascript.
 
 Very useful for bash scripting and devops works.
@@ -10,6 +15,7 @@ Usage: `jrep.js  <filter1>  <filter2> ...`
 * The <filter>s are applied sequentially on each line in the piped content.
 * In case of exception in any of the <filter>s, that line is removed.
 
+**Find jrep1 on npm: [jrep1](https://www.npmjs.com/package/jrep1)**
 ## 🤝
 * 👋 Feel free to send Pull Requests.
 * 👋 Feel free to request features.
