@@ -43,23 +43,8 @@ uname -a | jrep 'x.replace("a", "O")'
   git clone https://github.com/sohale/jrep.git
   ./jrep/scripts/install-macos.bash
 ```
-
 ### Development
-* e2e test
-```bash
-  test/e2e-test.bash
-
-```
-* apply latest local development changes into `jrep` command. In fact, just created a symbolic link to your local folder.
-```bash
-  npm i -g
-```
-
-* publish (npm)
-```bash
-  ./scripts/build/build-and-publish-npm.bash
-```
-
+[docs/internals.md]
 ## Example Usage
 Also see [test/e2e-test.bash]
 
