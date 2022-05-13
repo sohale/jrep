@@ -10,6 +10,8 @@ Feel free to request features.
 Docker version available
 
 ### Example Usage
+Also see [test/e2e-test.bash]
+
 * bash
 ```bash
   find .. | \

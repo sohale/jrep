@@ -8,15 +8,6 @@
 *
 Example:
 ```
-cat s1-log.log  |  node neat-jsfilter.js  '11+x' 'x+55'
-
-cat s1-log.log   |   node neat-jsfilter.js     '/"GET \/new-registry\/(.*)" "/.exec(x)[1]'
-
-cat s1-log.log | \
-    node neat-jsfilter.js \
-        '/"GET \/new-registry\/(.*)" "/.exec(x)[1]' | \
-            xargs -n 1 -I {}  \
-               bash -c "download0 {}"
 ```
 */
 
@@ -36,8 +27,8 @@ const read_from_stdin = () => fs.readFileSync(0).toString();
 console.log(transffile(read_from_stdin()));
 
 DEBUG_ARGS && console.error('x=>'+maps);
-//  forked from https://github.com/sohale/snippets/blob/master/javascript/neat-filter-obfuscated.js
 
 /*
+forked from https://github.com/sohale/snippets/blob/master/javascript/neat-filter-obfuscated.js
 forked from https://github.com/sohale/snippets/blob/master/javascript/neat-jsfilter.js
 */
