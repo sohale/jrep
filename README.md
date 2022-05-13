@@ -53,8 +53,8 @@ uname -a | jrep 'x.replace("a", "O")'
 
 * 💻 MacOS , Linux
 ```bash
-  git clone https://github.com/sohale/jrep.git
-  ./jrep/scripts/install-macos.bash
+git clone https://github.com/sohale/jrep.git
+./jrep/scripts/install-macos.bash
 ```
 <!-- Mac/Linux directly download the .js file from raw using curl -->
 
@@ -73,9 +73,9 @@ Also see [test/e2e-test.bash](test/e2e-test.bash)
 * 🐳 docker
 No need to install Node
 ```bash
-  find / | \
-      docker run -i sohale/jrep:latest \
-         '/\/([^\/]*\.py)$/.exec(x)[1]'
+find / | \
+    docker run -i sohale/jrep:latest \
+       '/\/([^\/]*\.py)$/.exec(x)[1]'
 ```
 <!-- 🐻🦦⌨️ -->
 * ⌨️ npx
@@ -85,9 +85,9 @@ uname -a | npx jrep 'x.replace("a", "O")'
 
 * 📡 bash (on the fly)
 ```bash
-  find .. | \
-      node -e "$(curl -L https://raw.githubusercontent.com/sohale/jrep/main/src/jrep.js)" '' \
-         '/\/([^\/]*\.py)$/.exec(x)[1]'
+find .. | \
+    node -e "$(curl -L https://raw.githubusercontent.com/sohale/jrep/main/src/jrep.js)" '' \
+       '/\/([^\/]*\.py)$/.exec(x)[1]'
 ```
  * requires NodeJS (tested on node 12) to be installed on your system.
 
