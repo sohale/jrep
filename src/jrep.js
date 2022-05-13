@@ -4,7 +4,7 @@ const fs = require("fs"), util = require("util");
 const ERR_EXCEPTIONS = process.env['ERR_EXCEPTIONS'], DEBUG_ARGS = process.env['DEBUG_ARGS'];
 
 const [_,__,...maps] = process.argv;
-const mapsf = maps.map( exprStr => (x => eval('x=>'+exprStr)(x) ) );
+const mapsf = maps.map( exprStr => (x => eval('x=>('+exprStr+')')(x) ) );
 /* ... ∘ mapsf[1] ∘ mapsf[0] ∘ (x) */
 const rec = (x, mapsf) => (mapsf.length===0)?x : rec(mapsf[0](x), mapsf.slice(1))
 
