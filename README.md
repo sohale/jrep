@@ -12,7 +12,7 @@ Docker version available
 ### Example Usage
 * bash
 ```bash
-  find / | \
+  find .. | \
       node -e "$(curl -L https://raw.githubusercontent.com/sohale/jrep/main/src/jrep.js)" '' \
          '/\/([^\/]*\.py)$/.exec(x)[1]'
 ```
