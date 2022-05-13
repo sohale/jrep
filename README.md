@@ -18,6 +18,7 @@ Usage: `jrep.js  <filter1>  <filter2> ...`
 * very quickly implemment custom and complex logic
 * concise
 * prebuilt primitive operations
+* Super lightweight
 * Docker version available
 #### Cons 👎
 * Needs `node` installed on the system. If you dno't want to install node, an alternative is to use `docker`.
@@ -65,7 +66,7 @@ No need to install Node
 * npx
 (coming soon)
 
-* npm
+* npm [https://www.npmjs.com/package/jrep1]
 ```bash
 npm install -g jrep
 ```
@@ -76,6 +77,3 @@ yarn install -g jrep
 
 ## Tutorial
 (comming soon)
-## Misc
-### Also see
-*  [njf (neat jsfilter)](https://github.com/sohale/snippets/blob/master/javascript/neat-jsfilter.js)
