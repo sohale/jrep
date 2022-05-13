@@ -6,7 +6,7 @@ Very handy and extermly flexible.
 
 Usage: `jrep.js  <filter1>  <filter2> ...`
 
-* Each <filter> is a map, (a string transformation), a javascript function with arg `x`..
+* Each <filter> is a map, (a string transformation), is the body of a **javascript** function with arg `x`..
 * The <filter>s are applied sequentially on each line in the piped content.
 * In case of exception in any of the <filter>s, that line is removed.
 
@@ -19,6 +19,7 @@ Usage: `jrep.js  <filter1>  <filter2> ...`
 * concise
 * prebuilt primitive operations
 * Super lightweight
+* Zero npm dependencies
 * Docker version available
 #### Cons 👎
 * Needs `node` installed on the system. If you dno't want to install node, an alternative is to use `docker`.
@@ -37,6 +38,7 @@ Usage: `jrep.js  <filter1>  <filter2> ...`
 ```bash
   npm i -g jrep1
 ```
+`uname -a | jrep 'x.replace('a', 'O')'`
 
 ### Test
 ```bash
