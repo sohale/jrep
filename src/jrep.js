@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // ------- built-in primitives -------
-const RE = reStr => ( x => new RegExp(reStr).exec(x)[1]);
+const RE1 = reStr => ( x => new RegExp(reStr).exec(x)[1]);
 const RER = (reStr, replcCodeStr) => ( x => {
   let p = new RegExp(reStr).exec(x)
   p = [...p];

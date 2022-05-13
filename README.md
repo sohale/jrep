@@ -24,12 +24,12 @@ Very handy and extermly flexible.
 * In case of exception in any of the <filter>s, that line is removed.
 
 ### 🎩 Built-in primitives
-<!-- ### **RE** -->
+<!-- ### **RE1** -->
 <!-- [^1] -->
 
 | primitive      |meaning| usage |
 | ----------- |----| ----------- |
-| ✨ RE ✨     |find/replace regexp| `RE(`  \<regular expression with parentheses\>  `)`       |
+| ✨ RE1 ✨     |find/replace regexp| `RE1(`  \<regular expression with parentheses\>  `)`       |
 | ✨ RER ✨    |find + custom replace| `RER(`  regexp. `,` a string with `p[1]`,`p[2]`, ...   `)`       |
 |             ||        |
 ### ⌨️ Example
@@ -60,7 +60,7 @@ uname -a | jrep 'x.replace(/[a-z]/g, "🐸")'
 ```
 * Using ✨ **built-in primitives** ✨. The following three are equivalent
 ```bash
-ps aux | jrep 'RE("(.*python.*)")'
+ps aux | jrep 'RE1("(.*python.*)")'
 ps aux | jrep '/(.*python.*)/.exec(x)[1]'
 ps aux | grep -e python
 ```
@@ -75,7 +75,7 @@ find .. | jrep 'RER("(.*)python(.*)", "p[1]+\"🐍🐍\"+p[2]")'
 * Eliminate usage of obscure aommands such as `awk`, `sed`, `perl`
 * Unified solution without usual tools `cut`, `grep`
 * Replace a matched regular expression with given custom ccombination (See `RER`)
-* Extract part of an RE pattern (See `RE`)
+* Extract part of an RE1 pattern (See `RE1`)
 
 ## 🤝
 * 👋 Feel free to send Pull Requests.
