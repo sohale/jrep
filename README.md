@@ -30,17 +30,24 @@ uname -a | jrep 'x.replace(/a/g, "O")'
 #### Practical examples
 * Extract *pid*s <br/>
 `ps aux|jrep 'x.substring(12,24)'`
+* Extract the filenames in a find command:
+```bash
+find .| jrep '/([^\/]*)$/.exec(x)[1]'
+```
 * Emulate `cut` command: <br/>
 `ps aux|jrep 'x.substring(12,24)'`
 * Pairs of pid and their running time:
 ```bash
 ps aux|jrep "{time=x.substring(70,78); pid=x.substring(15,24); return pid+':'+time;}"
 ```
-* Sort PIDs based on runing time: <br/>
+* Sort PIDs based on runing time:
 ```bash
 ps aux|jrep "{time=x.substring(70,78); pid=x.substring(15,24); return time + ':' + pid;}"|sort
 ```
-
+* Replace letters with frog:
+```bash
+uname -a | jrep 'x.replace(/[a-z]/g, "🐸")'
+```
 
 **Find jrep on npm: [jrep1](https://www.npmjs.com/package/jrep1)**
 
