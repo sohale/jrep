@@ -20,15 +20,19 @@ Usage: `jrep.js  <filter1>  <filter2> ...`
 * 👋 Feel free to send Pull Requests.
 * 👋 Feel free to request features.
 
-#### Pros 👍
-* very quickly implemment custom and complex logic
-* concise
-* prebuilt primitive operations
-* Super lightweight
-* Zero npm dependencies
-* Docker version available
-#### Cons 👎
-* Needs `node` installed on the system. If you dno't want to install node, an alternative is to use `docker`.
+#### Pros
+* 👍 transform (map) text in linux pipes
+* 👍 filter text in linux pipes
+* 👍 concise
+* 👍 versatile
+* 👍 exteremly flexible
+* 👍 customisable
+* 👍 prebuilt primitive operations
+* 👍 Super lightweight
+* 👍 Zero npm dependencies
+* 👍 Docker version available
+#### Cons
+* 👎 Needs `node` installed on the system. 👍 If you don't want to install node, an alternative is to use `docker`.
 #### requirements
 * NodeJS (tested on node 12)
 
