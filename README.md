@@ -27,10 +27,11 @@ Very handy and extermly flexible.
 <!-- ### **RE** -->
 <!-- [^1] -->
 
-| primitive      :| usage |
-| ----------- | ----------- |
-| ✨ RE ✨     | `RE(`  \<regular expression with parentheses\>  `)`       |
-|             |        |
+| primitive      |meaning| usage |
+| ----------- |----| ----------- |
+| ✨ RE ✨     |find/replace regexp| `RE(`  \<regular expression with parentheses\>  `)`       |
+| ✨ RER ✨    |find + custom replace| `RER(`  regexp. `,` a string with `p[1]`,`$p[2]`, ...   `)`       |
+|             ||        |
 ### ⌨️ Example
 ```bash
 uname -a | jrep 'x.replace(/a/g, "O")'
@@ -53,7 +54,7 @@ ps aux|jrep "{time=x.substring(70,78); pid=x.substring(15,24); return pid+':'+ti
 ```bash
 ps aux|jrep "{time=x.substring(70,78); pid=x.substring(15,24); return time + ':' + pid;}"|sort
 ```
-* Replace letters with frog: (such a useful usecase)
+* Replace letters with frog: (such a useful scenario)
 ```bash
 uname -a | jrep 'x.replace(/[a-z]/g, "🐸")'
 ```
