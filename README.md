@@ -64,14 +64,14 @@ uname -a | jrep 'x.replace("a", "O")'
 ## 📚 Example Usage
 Also see [test/e2e-test.bash](test/e2e-test.bash)
 
-* 📡 bash (on the fly)
+* 🐻 npm [jrep1 on npm](https://www.npmjs.com/package/jrep1)
 ```bash
-  find .. | \
-      node -e "$(curl -L https://raw.githubusercontent.com/sohale/jrep/main/src/jrep.js)" '' \
-         '/\/([^\/]*\.py)$/.exec(x)[1]'
+npm install -g jrep
 ```
- * requires NodeJS (tested on node 12) to be installed on your system.
-
+* 🐱 yarn
+```bash
+yarn install -g jrep
+```
 
 * 🐳 docker
 No need to install Node
@@ -86,14 +86,13 @@ No need to install Node
 uname -a | npx jrep 'x.replace("a", "O")'
 ```
 
-* 🐻 npm [jrep1 on npm](https://www.npmjs.com/package/jrep1)
+* 📡 bash (on the fly)
 ```bash
-npm install -g jrep
+  find .. | \
+      node -e "$(curl -L https://raw.githubusercontent.com/sohale/jrep/main/src/jrep.js)" '' \
+         '/\/([^\/]*\.py)$/.exec(x)[1]'
 ```
-* 🐱 yarn
-```bash
-yarn install -g jrep
-```
+ * requires NodeJS (tested on node 12) to be installed on your system.
 
 ## 📚 Tutorial
 (comming soon)
