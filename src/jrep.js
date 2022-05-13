@@ -1,10 +1,15 @@
 #!/usr/bin/env node
-
+// ------- built-in primitives -------
+const RE = reStr => ( x => new RegExp(reStr).exec(x)[1]);
+// -----------------------------------
+const eval1 = (x,exprStr) => eval('x=>('+exprStr+')')(x);
+const eval1NoX = (exprStr) => eval('('+exprStr+')'); // If it's a function (eg a primitive), don't give it x as input
+const eval2 = (x,exprStr)=>{const valOrFunc = eval1(x,exprStr); return (typeof valOrFunc==='function')? eval1NoX(exprStr)(x) : valOrFunc};
 const fs = require("fs"), util = require("util");
 const ERR_EXCEPTIONS = process.env['ERR_EXCEPTIONS'], DEBUG_ARGS = process.env['DEBUG_ARGS'];
 
 const [_,__,...maps] = process.argv;
-const mapsf = maps.map( exprStr => (x => eval('x=>('+exprStr+')')(x) ) );
+const mapsf = maps.map( exprStr => (x => eval2(x,exprStr) ) );
 /* ... ∘ mapsf[1] ∘ mapsf[0] ∘ (x) */
 const rec = (x, mapsf) => (mapsf.length===0)?x : rec(mapsf[0](x), mapsf.slice(1))
 
