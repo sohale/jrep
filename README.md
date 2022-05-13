@@ -6,7 +6,7 @@
 
 A new generation `grep` written in node/javascript.
 
-Think of `awk` & `sed` with javascript language.
+Think of `awk` & `sed` with javascript syntax.
 
 Very useful for bash scripting and devops works.
 Very handy and extermly flexible.
@@ -28,12 +28,16 @@ uname -a | jrep 'x.replace("a", "O")'
 ```
 
 #### Practical examples
-* Extract *pid*s `ps aux|jrep 'x.substring(12,24)'`
-* Emulate `cut` command: `ps aux|jrep 'x.substring(12,24)'`
+* Extract *pid*s <br/>
+`ps aux|jrep 'x.substring(12,24)'`
+* Emulate `cut` command: <br/>
+`ps aux|jrep 'x.substring(12,24)'`
 * Pairs of pid and their running time:
-`ps aux|jrep "{time=x.substring(70,78); pid=x.substring(15,24); return pid+':'+time;}"`
-* Sort PIDs based on runing time:
-`ps aux|jrep "{time=x.substring(70,78); pid=x.substring(15,24); return time + ':' + pid;}"|sort`
+```bash
+ps aux|jrep "{time=x.substring(70,78); pid=x.substring(15,24); return pid+':'+time;}"```
+* Sort PIDs based on runing time: <br/>
+```bash
+ps aux|jrep "{time=x.substring(70,78); pid=x.substring(15,24); return time + ':' + pid;}"|sort```
 
 
 **Find jrep on npm: [jrep1](https://www.npmjs.com/package/jrep1)**
