@@ -29,16 +29,20 @@ Usage: `jrep.js  <filter1>  <filter2> ...`
 
 
 ## Installation
+
+* npm
+```bash
+npm i -g jrep1
+# test:
+uname -a | jrep 'x.replace("a", "O")'
+```
+
+
 * MacOS , Linux
 ```bash
   git clone https://github.com/sohale/jrep.git
   ./jrep/scripts/install-macos.bash
 ```
-* npm
-```bash
-  npm i -g jrep1
-```
-`uname -a | jrep 'x.replace("a", "O")'`
 
 ### Test
 ```bash
@@ -66,7 +70,9 @@ No need to install Node
 ```
 
 * npx
-(coming soon)
+```bash
+uname -a | npx jrep 'x.replace("a", "O")'
+```
 
 * npm [https://www.npmjs.com/package/jrep1]
 ```bash
