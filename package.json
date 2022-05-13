@@ -3,6 +3,9 @@
   "version": "0.3.2",
   "description": "A new generation grep that uses Javascript",
   "main": "src/jrep.js",
+  "bin": {
+    "jrep": "src/jrep.js"
+  },
   "repository": "git@github.com:sohale/jrep.git",
   "author": "Sohail Siadatnejad <sohale@gmail.com>",
   "license": "GPL",
