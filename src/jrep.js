@@ -1,15 +1,4 @@
 #!/usr/bin/env node
-/**
-* Usage: neat-jsfilter.js  <filter1>  <filter2> ...
-*
-* * Each <filter> is a map, (a string transformation), a javascript function with arg `x`..
-* * The <filter>s are applied sequentially on each line in the piped content.
-* * In case of exception in any of the <filter>s, that line is removed.
-*
-Example:
-```
-```
-*/
 
 const fs = require("fs"), util = require("util");
 const ERR_EXCEPTIONS = process.env['ERR_EXCEPTIONS'], DEBUG_ARGS = process.env['DEBUG_ARGS'];
