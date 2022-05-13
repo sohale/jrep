@@ -44,11 +44,17 @@ uname -a | jrep 'x.replace("a", "O")'
   ./jrep/scripts/install-macos.bash
 ```
 
-### Deveiment
-* test
+### Development
+* e2e test
 ```bash
   test/e2e-test.bash
+
 ```
+* apply latest development changes into `jrep` command
+```bash
+  npm i -g
+```
+
 * publish (npm)
 ```bash
   ./scripts/build/build-and-publish-npm.bash
