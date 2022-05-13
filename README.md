@@ -69,9 +69,9 @@ ps aux | grep -e python
 find .. | jrep 'RER("(.*)python(.*)", "p[1]+\"🐍🐍\"+p[2]")'
 ```
 
-### 🐻 Find jrep on npm: [jrep1](https://www.npmjs.com/package/jrep1)**
+### 🐻 Find jrep on npm: [jrep1](https://www.npmjs.com/package/jrep1)
 
-### Some suggested use cases
+### 💡 Some suggested use cases
 * Eliminate usage of obscure aommands such as `awk`, `sed`, `perl`
 * Unified solution without usual tools `cut`, `grep`
 * Replace a matched regular expression with given custom ccombination (See `RER`)
