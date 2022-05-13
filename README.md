@@ -42,8 +42,6 @@ jrep  <filter1>  <filter2> ...
 #### 📌 Requirements
 * NodeJS (tested on node 12)
 
-
-
 ## 💻 Installation
 
 * 🐻 npm
@@ -53,16 +51,12 @@ npm i -g jrep1
 uname -a | jrep 'x.replace("a", "O")'
 ```
 
-
 * 💻 MacOS , Linux
 ```bash
   git clone https://github.com/sohale/jrep.git
   ./jrep/scripts/install-macos.bash
 ```
-### 💻 Development ⌨️
-[docs/internals.md](docs/internals.md)
-## 📚 Example Usage
-Also see [test/e2e-test.bash](test/e2e-test.bash)
+<!-- Mac/Linux directly download the .js file from raw using curl -->
 
 * 🐻 npm [jrep1 on npm](https://www.npmjs.com/package/jrep1)
 ```bash
@@ -72,6 +66,9 @@ npm install -g jrep
 ```bash
 yarn install -g jrep
 ```
+
+## 📚 Example Usage
+Also see [test/e2e-test.bash](test/e2e-test.bash)
 
 * 🐳 docker
 No need to install Node
@@ -93,6 +90,9 @@ uname -a | npx jrep 'x.replace("a", "O")'
          '/\/([^\/]*\.py)$/.exec(x)[1]'
 ```
  * requires NodeJS (tested on node 12) to be installed on your system.
+
+### 💻 Development ⌨️
+[docs/internals.md](docs/internals.md)
 
 ## 📚 Tutorial
 (comming soon)
