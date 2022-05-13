@@ -44,9 +44,14 @@ uname -a | jrep 'x.replace("a", "O")'
   ./jrep/scripts/install-macos.bash
 ```
 
-### Test
+### Deveiment
+* test
 ```bash
   test/e2e-test.bash
+```
+* publish (npm)
+```bash
+  ./scripts/build/build-and-publish-npm.bash
 ```
 
 ## Example Usage
