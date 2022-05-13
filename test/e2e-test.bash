@@ -21,7 +21,9 @@ prerequisites
 
 rm -rf $REPOROOT/e2e-temp
 mkdir "$REPOROOT/e2e-temp"
-# cd "$REPOROOT/e2e-temp"
-git clone https://github.com/sohale/jrep.git "$REPOROOT//e2e-temp/jrep"
+git clone https://github.com/sohale/jrep.git "$REPOROOT/e2e-temp/jrep"
+
 cd "$REPOROOT/e2e-temp/jrep"
 ls -alt
+ls -alt test
+./test/test-bash-target.bash
