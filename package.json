@@ -1,6 +1,6 @@
 {
   "name": "jrep1",
-  "version": "0.0.3",
+  "version": "0.3.2",
   "description": "A new generation grep (js)",
   "main": "src/jrep.js",
   "repository": "git@github.com:sohale/jrep.git",
