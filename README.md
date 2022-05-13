@@ -32,6 +32,10 @@ Usage: `jrep.js  <filter1>  <filter2> ...`
   git clone https://github.com/sohale/jrep.git
   ./jrep/scripts/install-macos.bash
 ```
+* npm
+```bash
+  npm i -g jrep1
+```
 
 ### Test
 ```bash
@@ -72,5 +76,6 @@ yarn install -g jrep
 
 ## Tutorial
 (comming soon)
+## Misc
 ### Also see
 *  [njf (neat jsfilter)](https://github.com/sohale/snippets/blob/master/javascript/neat-jsfilter.js)
