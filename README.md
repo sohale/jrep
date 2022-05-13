@@ -29,8 +29,8 @@ Very handy and extermly flexible.
 
 | primitive      :| usage |
 | ----------- | ----------- |
-| ⭐️ RE       | `RE(`  \<regular expression with parentheses\>  `)`       |
-|    |        |
+| ✨ RE ✨     | `RE(`  \<regular expression with parentheses\>  `)`       |
+|             |        |
 ### ⌨️ Example
 ```bash
 uname -a | jrep 'x.replace(/a/g, "O")'
@@ -53,11 +53,11 @@ ps aux|jrep "{time=x.substring(70,78); pid=x.substring(15,24); return pid+':'+ti
 ```bash
 ps aux|jrep "{time=x.substring(70,78); pid=x.substring(15,24); return time + ':' + pid;}"|sort
 ```
-* Replace letters with frog:
+* Replace letters with frog: (such a useful usecase)
 ```bash
 uname -a | jrep 'x.replace(/[a-z]/g, "🐸")'
 ```
-* Using **built-in primitives**. The following three are equivalent
+* Using ✨ **built-in primitives** ✨. The following three are equivalent
 ```bash
 ps aux | jrep 'RE("(.*python.*)")'
 ps aux | jrep '/(.*python.*)/.exec(x)[1]'
