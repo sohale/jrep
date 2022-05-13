@@ -34,10 +34,12 @@ uname -a | jrep 'x.replace("a", "O")'
 `ps aux|jrep 'x.substring(12,24)'`
 * Pairs of pid and their running time:
 ```bash
-ps aux|jrep "{time=x.substring(70,78); pid=x.substring(15,24); return pid+':'+time;}"```
+ps aux|jrep "{time=x.substring(70,78); pid=x.substring(15,24); return pid+':'+time;}"
+```
 * Sort PIDs based on runing time: <br/>
 ```bash
-ps aux|jrep "{time=x.substring(70,78); pid=x.substring(15,24); return time + ':' + pid;}"|sort```
+ps aux|jrep "{time=x.substring(70,78); pid=x.substring(15,24); return time + ':' + pid;}"|sort
+```
 
 
 **Find jrep on npm: [jrep1](https://www.npmjs.com/package/jrep1)**
