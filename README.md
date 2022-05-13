@@ -38,7 +38,7 @@ Usage: `jrep.js  <filter1>  <filter2> ...`
 ```bash
   npm i -g jrep1
 ```
-`uname -a | jrep 'x.replace('a', 'O')'`
+`uname -a | jrep 'x.replace("a", "O")'`
 
 ### Test
 ```bash
