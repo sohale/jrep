@@ -1,5 +1,5 @@
 {
-  "name": "jrep",
+  "name": "jrep1",
   "version": "0.0.3",
   "description": "A new generation grep (js)",
   "main": "src/jrep.js",
