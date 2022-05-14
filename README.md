@@ -63,7 +63,12 @@ ps aux|jrep "{time=x.substring(70,78); pid=x.substring(15,24); return time + ':'
 ```bash
 uname -a | jrep 'x.replace(/[a-z]/g, "🐸")'
 ```
-* Using ✨ **built-in primitives** ✨. The following three are equivalent
+* Using ✨ **built-in primitives: `RE1`** ✨. The following two are equivalent:
+```bash
+ps aux | jrep 'RE1(".*(python.*)")'
+ps aux | jrep '/.*(python.*)/.exec(x)[1]'
+```
+* The following three are equivalent
 ```bash
 ps aux | jrep 'RE1("(.*python.*)")'
 ps aux | jrep '/(.*python.*)/.exec(x)[1]'
