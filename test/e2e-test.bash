@@ -27,3 +27,6 @@ cd "$REPOROOT/e2e-temp/jrep"
 ls -alt
 ls -alt test
 ./test/test-bash-target.bash
+
+EXTRACT_BASENAME='/([^\/]*)$/.exec(x)[1]'
+find / | jrep $EXTRACT_BASENAME | head

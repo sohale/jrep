@@ -44,6 +44,11 @@ uname -a | jrep 'x.replace(/a/g, "O")'
 ```bash
 find .| jrep '/([^\/]*)$/.exec(x)[1]'
 ```
+* Using env for filter names: Another way to write it is to use bash env vars for filter names. It is will be also more reusable. A more readable notation:
+```bash
+EXTRACT_BASENAME='/([^\/]*)$/.exec(x)[1]'
+find / | jrep $EXTRACT_BASENAME | head
+```
 * Emulate `cut` command: <br/>
 `ps aux|jrep 'x.substring(12,24)'`
 * Pairs of pid and their running time:

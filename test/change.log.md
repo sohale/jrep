@@ -1,10 +1,10 @@
 
 # Change log
 
-* 0.3.10 -- `RE1`, `RER` (no streamed pipes).
+* `0.3.10` -- Status: `RE1`, `RER` (no streamed pipes).
 
 * `d14d2adedcc8bf12794ded3a039e0784814b4ee9` -- Fri 13 May 2022
 Added support for streams. Almost no tests though.
 
-* 0.4.1: Support for streams. For long lived pipes, not to wait until the end of pipe/stream
+* `0.4.1`: Support for streams. For long lived pipes, not to wait until the end of pipe/stream
 
