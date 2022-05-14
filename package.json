@@ -9,9 +9,22 @@
   "scripts": {
     "test": "test/e2e-test.bash"
   },
-  "keywords": ["grep", "awk", "sed", "linux", "scripting", "bash"],
+  "keywords": [
+    "grep",
+    "awk",
+    "sed",
+    "linux",
+    "scripting",
+    "bash"
+  ],
   "repository": "git@github.com:sohale/jrep.git",
   "author": "Sohail Siadatnejad <sohale@gmail.com>",
   "license": "GPL",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "eslint": "^8.15.0",
+    "mocha": "9.2.2",
+    "nyc": "^15.1.0"
+  }
 }

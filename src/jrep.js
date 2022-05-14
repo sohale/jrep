@@ -59,24 +59,14 @@ function consumeStream(__stdin, muwMuch, consumer) {
     while(true) {
       const hm = muwMuch(buffstr);
       if (hm === null) break;
-      const hmsum = _sum(hm);
+      const hmsum = _sum(hm); // consumedLen = total len of outchunks
       assert(hmsum <= buffstr.length && hmsum > 0);
-      //const outchunk = buffstr.slice(0, hmsum);
-      const o_cumsum = _cumsum(hm);
-      //const outchunks = buffstr.reduce(0, hmsum);
+      // const o_cumsum = _cumsum(hm);
       const outchunks = _mutislice0(buffstr, hm);
-      //consumer(outchunk, false);
       consumer(outchunks, false);
-      //buffstr = buffstr.slice(/*consumedLen*/ outchunk.length);
-      //console.log(buffstr);
-      //console.log('hm', hm);
-      //console.log('outchunks', outchunks);
       buffstr = buffstr.slice(/*consumedLen*/ hmsum);
-      //const mutislice = _mutislice0(buffstr, hm);
-      //buffstr = buffstr.slice
-      //console.log(buffstr);
-      countr = countr + hmsum;
 
+      countr = countr + hmsum;
     }
   }
   function bring(inchunk) {
@@ -91,7 +81,6 @@ function consumeStream(__stdin, muwMuch, consumer) {
     }
     assert(countr === 0); // integrity test
   }
-
   function attach_stream(_stdin) {
     _stdin.on('data', inchunk => bring(inchunk.toString()));
     _stdin.on('end',() => bring_end());
@@ -102,19 +91,18 @@ function consumeStream(__stdin, muwMuch, consumer) {
 function processio(inpipe, re, transfline, outpipe) {
 consumeStream(inpipe,
   /*acceptor*/ (_buffstr) => {
-    //console.log(JSON.stringify(_buffstr))
+    // by returnning a tuple of numbers, decides how much of this content wil be taken
     const m = new RegExp(re).exec(_buffstr);
-    //console.log(m)
     if (!m) return null;
     // m[1] is trivially === '\n'
-    //console.log('m.index', m.index)
     const l=[m.index, m[1].length];
     assert(l[0] + l[1] > 0); //assert(m.index > 0);
-    //assert(hm <= buffstr.length && hm > 0);
+    assert(_sum(hm) <= buffstr.length && _sum(hm) > 0);
     return l; // discharge size
   },
   /*consumer*/(outchunks, isLastPiece) => {
-    // If the last piece is empty, this is not called.
+    // If the last piece is empty, this will not be called.
+    // However, outchunks[0] can be empty in other cases
     outpipe.write(transfline(outchunks[0]) + (isLastPiece?'🕯 ':'⏎ ') );
     const transfline2 = x=>x; // preserve the newline
     outpipe.write(transfline2(outchunks[1]) )
@@ -127,3 +115,5 @@ processio(process.stdin, /(\n)/, transfline, process.stdout);
 forked from https://github.com/sohale/snippets/blob/master/javascript/neat-filter-obfuscated.js
 forked from https://github.com/sohale/snippets/blob/master/javascript/neat-jsfilter.js
 */
+
+module.exports = {};
