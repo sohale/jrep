@@ -69,31 +69,27 @@ function consumeStream(__stdin, muwMuch, consumer) {
       consumer(outchunks, false);
       //buffstr = buffstr.slice(/*consumedLen*/ outchunk.length);
       //console.log(buffstr);
-      console.log('hm', hm);
-      console.log('outchunks', outchunks);
+      //console.log('hm', hm);
+      //console.log('outchunks', outchunks);
       buffstr = buffstr.slice(/*consumedLen*/ hmsum);
       //const mutislice = _mutislice0(buffstr, hm);
       //buffstr = buffstr.slice
       //console.log(buffstr);
-      countr = countr + 1;
-      if (countr > 4) {
-        //process.exit(1);
-      }
+      countr = countr + hmsum;
 
     }
   }
   function bring(inchunk) {
-    console.log('inchunk: '+inchunk);
-    console.log('inchunk.len: '+inchunk.length);
     buffstr = buffstr + inchunk;
+    countr = countr - inchunk.length;
     push_as_much_as_you_can();
   }
   function bring_end() {
-    console.log('endchunk:'+buffstr.length)
     push_as_much_as_you_can();
     if(buffstr.length > 0) {
       consumer(buffstr, true);
     }
+    assert(countr === 0); // integrity test
   }
 
   function attach_stream(_stdin) {
@@ -118,6 +114,7 @@ consumeStream(inpipe,
     return l; // discharge size
   },
   /*consumer*/(outchunks, isLastPiece) => {
+    // If the last piece is empty, this is not called.
     outpipe.write(transfline(outchunks[0]) + (isLastPiece?'🕯 ':'⏎ ') );
     const transfline2 = x=>x; // preserve the newline
     outpipe.write(transfline2(outchunks[1]) )
