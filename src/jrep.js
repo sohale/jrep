@@ -85,7 +85,8 @@ consumeStream(inpipe,
     // m[1] is trivially === '\n'
     const l=[m.index, m[1].length];
     assert(l[0] + l[1] > 0); //assert(m.index > 0);
-    assert(_sum(hm) <= buffstr.length && _sum(hm) > 0);
+    const hm=l
+    assert(_sum(hm) <= _buffstr.length && _sum(hm) > 0);
     return l; // discharge size
   },
   /*consumer*/(outchunks, isLastPiece) => {
