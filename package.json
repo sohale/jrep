@@ -7,7 +7,11 @@
     "jrep": "src/jrep.js"
   },
   "scripts": {
-    "test": "test/e2e-test.bash"
+    "test:e2e": "test/e2e-test.bash",
+    "lint": "eslint '**/*.js'",
+    "lint:fix": "npm run lint -- --fix",
+    "pretest": "npm run lint",
+    "test:unit": "NODE_ENV=test nyc ./node_modules/mocha/bin/mocha --config test/.mocharc.js"
   },
   "keywords": [
     "grep",
