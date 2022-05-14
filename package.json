@@ -7,11 +7,48 @@
     "jrep": "src/jrep.js"
   },
   "scripts": {
-    "test": "test/e2e-test.bash"
+    "test:e2e": "test/e2e-test.bash",
+    "lint": "eslint '**/*.js'",
+    "lint:fix": "npm run lint -- --fix",
+    "pretest": "npm run lint",
+    "test:unit": "NODE_ENV=test nyc ./node_modules/mocha/bin/mocha --config test/.mocharc.js"
   },
-  "keywords": ["grep", "awk", "sed", "linux", "scripting", "bash"],
+  "keywords": [
+    "grep",
+    "awk",
+    "sed",
+    "linux",
+    "scripting",
+    "bash"
+  ],
   "repository": "git@github.com:sohale/jrep.git",
   "author": "Sohail Siadatnejad <sohale@gmail.com>",
   "license": "GPL",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "eslint": "^8.15.0",
+    "mocha": "9.2.2",
+    "nyc": "^15.1.0"
+  },
+  "nyc": {
+    "all": true,
+    "reporter": [
+      "lcov",
+      "text",
+      "text-summary"
+    ],
+    "check-coverage": true,
+    "lines": 95,
+    "statements": 95,
+    "functions": 95,
+    "branches": 90,
+    "exclude": [
+      "test/**",
+      "src",
+      "test-core-gateway-lib",
+      "tests",
+      "coverage"
+    ]
+  }
 }
