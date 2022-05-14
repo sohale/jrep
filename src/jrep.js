@@ -38,19 +38,7 @@ const _cumsum = arr => arr.reduce((acc,e)=>[...acc, _lastNum0(acc)+e],[]);
 const _sum = arr => arr.reduce((s,x)=>s+x,0);
 // const _mutislice = (str, arr) => _cumsum(arr).reduce((acc,x)=>[...acc, str.substring(_lastNum0[acc],x)], []);
 const _mutislice0 = (str, arr) => _cumsum(arr).map((si,i,cums)=>str.substring(i===0?0:cums[i-1], cums[i]));
-function tests() {
-  console.log(_lastNum([8,9])===9);
-  console.log(_lastNum0([])===0);
-  console.log(_lastNum([-2])===-2);
-  console.log(_lastNum0([-2])===-2);
-  console.log(_cumsum([]),[]);
-  console.log(_cumsum([100,2]),[100,102]);
-  console.log(_cumsum([100]),[100]);
-  console.log(_cumsum([100,-2]),[100,98]);
-  console.log(_cumsum([10,2,4,5]),[10,12,16,21]);
-  console.log(_cumsum([1,3,1,2]), [1,4,5,7]);
-  console.log(_mutislice0('a2345678',[1,3,1,2]), ['a','234','5','67']);
-}
+
 //tests();
 let countr = 0;
 function consumeStream(__stdin, muwMuch, consumer) {
@@ -116,4 +104,13 @@ forked from https://github.com/sohale/snippets/blob/master/javascript/neat-filte
 forked from https://github.com/sohale/snippets/blob/master/javascript/neat-jsfilter.js
 */
 
-module.exports = {};
+module.exports = {
+  autil: {_lastNum, _lastNum0, _cumsum, _sum, _mutislice0},
+  processio,consumeStream,
+  primmitives: {
+    RE1,RER,
+  },
+  o : {eval1,eval2,eval1NoX,},
+  core: {skipException, rec, },
+  etc: {assert},
+};
