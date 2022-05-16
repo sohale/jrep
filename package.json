@@ -7,7 +7,7 @@
     "jrep": "src/jrep.js"
   },
   "scripts": {
-    "test:e2e": "test/e2e-test.bash",
+    "test:e2e": "bash test/e2e-test.bash",
     "lint": "eslint 'src/**/*.js'",
     "lint:fix": "npm run lint -- --fix",
     "pretest": "#npm run lint",
