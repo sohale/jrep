@@ -45,25 +45,25 @@ const unicodeLength = str => [...str].length;
 function consumeStream(__stdin, muwMuch, consumer) {
   let buffstr = '';
   let countr = 0;
+  function consumeThisMuch(hm, isLastPiece) {
+    const consumeLen = _sum(hm); // outchunkLen
+    assert(consumeLen <= buffstr.length && consumeLen > 0);
+    const outchunkTuple = _mutislice0(buffstr, hm);
+    buffstr = buffstr.slice(consumeLen);
+    countr = countr - consumeLen;
+    consumer(outchunkTuple, isLastPiece);
+  }
   function push_as_much_as_you_can() {
     while(true) {
       const hm = muwMuch(buffstr);
       if (hm === null) break;
-      consumeThisMuch(hm);
+      consumeThisMuch(hm, false);
     }
   }
   function bring(inchunk) {
     buffstr = buffstr + inchunk;
     countr = countr + inchunk.length;
     push_as_much_as_you_can();
-  }
-  function consumeThisMuch(hm) {
-    const consumeLen = _sum(hm); // outchunkLen
-    assert(consumeLen <= buffstr.length && consumeLen > 0);
-    const outchunks = _mutislice0(buffstr, hm);
-    buffstr = buffstr.slice(consumeLen);
-    countr = countr - consumeLen;
-    consumer(outchunks, false);
   }
   function bring_end() {
     push_as_much_as_you_can(); // in full chunks
@@ -74,12 +74,12 @@ function consumeStream(__stdin, muwMuch, consumer) {
       buffstr = '';
       consumer([buffstr, ''], true);
       */
-      consumeThisMuch([buffstr.length, '']);
+      consumeThisMuch([buffstr.length, ''], true);
     } else {
       // keep it or lose it?
       //consumer(outchunksTuple, true); //for last empty line? no. This is when there is no line. no buffer content.
     }
-    assert(countr === 0); // integrity test
+    assert(countr === 0); // integrity test at end of it all
   }
   function attach_stream(_stdin) {
     _stdin.on('data', inchunk => bring(inchunk.toString()));
@@ -102,19 +102,19 @@ consumeStream(inpipe,
     assert(_sum(hm) <= _buffstr.length && _sum(hm) > 0);
     return l; // discharge size
   },
-  /*consumer*/(outchunks, isLastPiece) => {
+  /*consumer*/(outchunkTuple, isLastPiece) => {
+    assert(outchunkTuple.length === 2);
     // If the last chunk of input is empty, this will not be called.
-    // However, outchunks[0] can be empty in other cases
-    const out = transfline(outchunks[0]); // todo: filter-like
+    // However, outchunkTuple[0] can be empty in other cases
+    const out = transfline(outchunkTuple[0]); // todo: filter-like
     if (out !== null && out !== undefined) {
       outpipe.write(out);
 
       // separator (newline) part
       const transfline2 = (x) => x; // preserve the newline
       const transfline3 = (x) => DEBUG_CANDLE ? ((isLastPiece?'🕯 ':'⏎ ') + x) : x;
-      outpipe.write(  transfline3( transfline2(outchunks[1]) ) );
+      outpipe.write(  transfline3( transfline2(outchunkTuple[1]) ) );
     }
-    assert(outchunks.length === 2);
   });
 }
 processio(process.stdin, /(\n)/, transfline, process.stdout);
