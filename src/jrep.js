@@ -41,20 +41,15 @@ const _sum = arr => arr.reduce((s,x)=>s+x,0);
 const _mutislice0 = (str, arr) => _cumsum(arr).map((si,i,cums)=>str.substring(i===0?0:cums[i-1], cums[i]));
 const unicodeLength = str => [...str].length;
 //tests();
-let countr = 0;
+
 function consumeStream(__stdin, muwMuch, consumer) {
   let buffstr = '';
+  let countr = 0;
   function push_as_much_as_you_can() {
     while(true) {
       const hm = muwMuch(buffstr);
       if (hm === null) break;
-      const hmsum = _sum(hm); // consumedLen = total len of outchunks
-      assert(hmsum <= buffstr.length && hmsum > 0);
-      // const o_cumsum = _cumsum(hm);
-      const outchunks = _mutislice0(buffstr, hm);
-      consumer(outchunks, false);
-      buffstr = buffstr.slice(/*consumedLen*/ hmsum);
-      countr = countr - hmsum;
+      consumeThisMuch(hm);
     }
   }
   function bring(inchunk) {
@@ -62,19 +57,26 @@ function consumeStream(__stdin, muwMuch, consumer) {
     countr = countr + inchunk.length;
     push_as_much_as_you_can();
   }
+  function consumeThisMuch(hm) {
+    const hmsum = _sum(hm); // consumedLen = total len of outchunks
+    assert(hmsum <= buffstr.length && hmsum > 0);
+    const outchunks = _mutislice0(buffstr, hm);
+    buffstr = buffstr.slice(/*consumedLen*/ hmsum);
+    countr = countr - hmsum;
+    consumer(outchunks, false);
+  }
   function bring_end() {
     push_as_much_as_you_can(); // in full chunks
     // non-full chunks:  -> line separator cannot be found
     // this should parallel inside of the while loop.
-    const ll = buffstr.length;
-    //const indicesTuple = [ll, 0]; // index of the separator in the string, length of separator
-    //const outchunksTuple = _mutislice0(buffstr, indicesTuple);
-    const outchunksTuple = [buffstr, ''];
-    buffstr = ''; // buffstr.slice(ll);
-    countr = countr - ll;
-    if(ll > 0) {
-      //consumer(buffstr, true); // unit test should fail using this
-      consumer(outchunksTuple, true);
+    if(buffstr.length > 0) {
+      // consumer(buffstr, true); // unit test should fail using this
+      /*
+      countr = countr - buffstr.length;
+      buffstr = '';
+      consumer([buffstr, ''], true);
+      */
+      consumeThisMuch([buffstr.length, '']);
     } else {
       // keep it or lose it?
       //consumer(outchunksTuple, true); //for last empty line? no. This is when there is no line. no buffer content.
