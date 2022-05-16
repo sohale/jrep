@@ -8,3 +8,6 @@ Added support for streams. Almost no tests though.
 
 * `0.4.1`: Support for streams. For long lived pipes, not to wait until the end of pipe/stream
 
+* `0.4.2`: ?
+
+* `0.5.0`: Fixes for stream: last chunk (outchunk) of the stream was losing. Some tests added.

@@ -53,7 +53,7 @@ function consumeStream(__stdin, muwMuch, consumer) {
     countr = countr - consumeLen;
     consumer(outchunkTuple, isLastPiece);
   }
-  function push_as_much_as_you_can() {
+  function push_as_much_ripechunks_as_you_can() {
     while(true) {
       const hm = muwMuch(buffstr);
       if (hm === null) break;
@@ -63,11 +63,11 @@ function consumeStream(__stdin, muwMuch, consumer) {
   function bring(inchunk) {
     buffstr = buffstr + inchunk;
     countr = countr + inchunk.length;
-    push_as_much_as_you_can();
+    push_as_much_ripechunks_as_you_can();
   }
   function bring_end() {
-    push_as_much_as_you_can(); // in full chunks
-    // non-full chunks:  -> line separator cannot be found
+    push_as_much_ripechunks_as_you_can(); // in full (ripe) chunks
+    // non-full (unripe) chunks:  -> line separator cannot be found
     if(buffstr.length > 0) {
       /*
       countr = countr - buffstr.length;
