@@ -13,6 +13,7 @@ const eval1NoX = (exprStr) => eval('('+exprStr+')'); // If it's a function (eg a
 const eval2 = (x,exprStr)=>{const valOrFunc = eval1(x,exprStr); return (typeof valOrFunc==='function')? eval1NoX(exprStr)(x) /*valOrFunc(x)*/ : valOrFunc};
 const fs = require("fs"), util = require("util");
 const ERR_EXCEPTIONS = process.env['ERR_EXCEPTIONS'], DEBUG_ARGS = process.env['DEBUG_ARGS'];
+const DEBUG_CANDLE = process.env['DEBUG_CANDLE'];
 
 const [_,__,...maps] = process.argv;
 const mapsf = maps.map( exprStr => (x => eval2(x,exprStr) ) );
@@ -38,7 +39,7 @@ const _cumsum = arr => arr.reduce((acc,e)=>[...acc, _lastNum0(acc)+e],[]);
 const _sum = arr => arr.reduce((s,x)=>s+x,0);
 // const _mutislice = (str, arr) => _cumsum(arr).reduce((acc,x)=>[...acc, str.substring(_lastNum0[acc],x)], []);
 const _mutislice0 = (str, arr) => _cumsum(arr).map((si,i,cums)=>str.substring(i===0?0:cums[i-1], cums[i]));
-
+const unicodeLength = str => [...str].length;
 //tests();
 let countr = 0;
 function consumeStream(__stdin, muwMuch, consumer) {
@@ -53,19 +54,30 @@ function consumeStream(__stdin, muwMuch, consumer) {
       const outchunks = _mutislice0(buffstr, hm);
       consumer(outchunks, false);
       buffstr = buffstr.slice(/*consumedLen*/ hmsum);
-
-      countr = countr + hmsum;
+      countr = countr - hmsum;
     }
   }
   function bring(inchunk) {
     buffstr = buffstr + inchunk;
-    countr = countr - inchunk.length;
+    countr = countr + inchunk.length;
     push_as_much_as_you_can();
   }
   function bring_end() {
-    push_as_much_as_you_can();
-    if(buffstr.length > 0) {
-      consumer(buffstr, true);
+    push_as_much_as_you_can(); // in full chunks
+    // non-full chunks:  -> line separator cannot be found
+    // this should parallel inside of the while loop.
+    const ll = buffstr.length;
+    //const indicesTuple = [ll, 0]; // index of the separator in the string, length of separator
+    //const outchunksTuple = _mutislice0(buffstr, indicesTuple);
+    const outchunksTuple = [buffstr, ''];
+    buffstr = ''; // buffstr.slice(ll);
+    countr = countr - ll;
+    if(ll > 0) {
+      //consumer(buffstr, true); // unit test should fail using this
+      consumer(outchunksTuple, true);
+    } else {
+      // keep it or lose it?
+      //consumer(outchunksTuple, true); //for last empty line? no. This is when there is no line. no buffer content.
     }
     assert(countr === 0); // integrity test
   }
@@ -76,25 +88,32 @@ function consumeStream(__stdin, muwMuch, consumer) {
   attach_stream(__stdin);
 }
 // todo: chain output (already 3 stages)
+// toodo: renme re -> newline_split_re
 function processio(inpipe, re, transfline, outpipe) {
 consumeStream(inpipe,
   /*acceptor*/ (_buffstr) => {
     // by returnning a tuple of numbers, decides how much of this content wil be taken
     const m = new RegExp(re).exec(_buffstr);
-    if (!m) return null;
+    if (!m) return null; // no full-chunk. wait for mroe input
     // m[1] is trivially === '\n'
-    const l=[m.index, m[1].length];
+    const l = [m.index, m[1].length]; // index of the separator in the string, length of separator
     assert(l[0] + l[1] > 0); //assert(m.index > 0);
     const hm=l;
     assert(_sum(hm) <= _buffstr.length && _sum(hm) > 0);
     return l; // discharge size
   },
   /*consumer*/(outchunks, isLastPiece) => {
-    // If the last piece is empty, this will not be called.
+    // If the last chunk of input is empty, this will not be called.
     // However, outchunks[0] can be empty in other cases
-    outpipe.write(transfline(outchunks[0]) + (isLastPiece?'🕯 ':'⏎ ') );
-    const transfline2 = x=>x; // preserve the newline
-    outpipe.write(transfline2(outchunks[1]) )
+    const out = transfline(outchunks[0]); // todo: filter-like
+    if (out !== null && out !== undefined) {
+      outpipe.write(out);
+
+      // separator (newline) part
+      const transfline2 = (x) => x; // preserve the newline
+      const transfline3 = (x) => DEBUG_CANDLE ? ((isLastPiece?'🕯 ':'⏎ ') + x) : x;
+      outpipe.write(  transfline3( transfline2(outchunks[1]) ) );
+    }
     assert(outchunks.length === 2);
   });
 }

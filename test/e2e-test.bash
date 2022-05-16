@@ -26,7 +26,16 @@ git clone https://github.com/sohale/jrep.git "$REPOROOT/e2e-temp/jrep"
 cd "$REPOROOT/e2e-temp/jrep"
 ls -alt
 ls -alt test
-./test/test-bash-target.bash
+
+#################
+#  test suite   #
+#################
+
+bash ./test/test-bash-target.bash
+bash test/test-last-non-empty.bash
+
+#################
 
 EXTRACT_BASENAME='/([^\/]*)$/.exec(x)[1]'
 find / | jrep $EXTRACT_BASENAME | head
+
