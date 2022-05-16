@@ -10,8 +10,9 @@
     "test:e2e": "test/e2e-test.bash",
     "lint": "eslint 'src/**/*.js'",
     "lint:fix": "npm run lint -- --fix",
-    "pretest": "npm run lint",
-    "test:unit": "NODE_ENV=test nyc ./node_modules/mocha/bin/mocha --config test/.mocharc.js"
+    "pretest": "#npm run lint",
+    "test:unit": "NODE_ENV=test nyc ./node_modules/mocha/bin/mocha --config test/.mocharc.js",
+    "test": "npm run test:unit"
   },
   "keywords": [
     "grep",
@@ -51,8 +52,8 @@
     "branches": 90,
     "exclude": [
       "test/**",
-      "src",
-      "test-core-gateway-lib",
+      ".eslintrc.js",
+      "codebin",
       "tests",
       "coverage"
     ]
