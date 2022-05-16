@@ -58,19 +58,17 @@ function consumeStream(__stdin, muwMuch, consumer) {
     push_as_much_as_you_can();
   }
   function consumeThisMuch(hm) {
-    const hmsum = _sum(hm); // consumedLen = total len of outchunks
-    assert(hmsum <= buffstr.length && hmsum > 0);
+    const consumeLen = _sum(hm); // outchunkLen
+    assert(consumeLen <= buffstr.length && consumeLen > 0);
     const outchunks = _mutislice0(buffstr, hm);
-    buffstr = buffstr.slice(/*consumedLen*/ hmsum);
-    countr = countr - hmsum;
+    buffstr = buffstr.slice(consumeLen);
+    countr = countr - consumeLen;
     consumer(outchunks, false);
   }
   function bring_end() {
     push_as_much_as_you_can(); // in full chunks
     // non-full chunks:  -> line separator cannot be found
-    // this should parallel inside of the while loop.
     if(buffstr.length > 0) {
-      // consumer(buffstr, true); // unit test should fail using this
       /*
       countr = countr - buffstr.length;
       buffstr = '';
