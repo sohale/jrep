@@ -49,6 +49,15 @@ find .| jrep '/([^\/]*)$/.exec(x)[1]'
 EXTRACT_BASENAME='/([^\/]*)$/.exec(x)[1]'
 find / | jrep $EXTRACT_BASENAME | head
 ```
+* ExtractPID from `ps aux` (Tested on MacOS)
+```bash
+PSAUX_PID='[.../([^ ]*) * (\d*) *(\d+\.\d+) *(\d+\.\d+) *(\d+) *(\d+) *([^ ]+) +([^ ]+) +([^ ]+) +([^ ]+) +(.*)$/.exec(x)].slice(1)[1]'
+ps aux | jrep "$PSAUX_PID"
+```
+* Another usage of `PSAUX_PID`:
+```bash
+ps aux | grep -v grep | grep http-server | jrep "$PSAUX_PID" | xargs kill
+```
 * Emulate `cut` command: <br/>
 `ps aux|jrep 'x.substring(12,24)'`
 * Pairs of pid and their running time:
