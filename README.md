@@ -49,7 +49,7 @@ find .| jrep '/([^\/]*)$/.exec(x)[1]'
 EXTRACT_BASENAME='/([^\/]*)$/.exec(x)[1]'
 find / | jrep $EXTRACT_BASENAME | head
 ```
-* ExtractPID from `ps aux` (Tested on MacOS)
+* The `PSAUX_PID` can extract the PID from the output of the commonly used `ps aux` command (tested on MacOS). Is can be used to extract other columns 
 ```bash
 PSAUX_PID='[.../([^ ]*) * (\d*) *(\d+\.\d+) *(\d+\.\d+) *(\d+) *(\d+) *([^ ]+) +([^ ]+) +([^ ]+) +([^ ]+) +(.*)$/.exec(x)].slice(1)[1]'
 ps aux | jrep "$PSAUX_PID"
