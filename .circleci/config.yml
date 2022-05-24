@@ -32,6 +32,7 @@ jobs:
               npm test || :
               # bash test/e2e-test.bash
               npm run test:e2e || : # force passing
+              # todo: Missing package-lock.json
 
 workflows:
   # Below is the definition of your workflow.
