@@ -115,7 +115,7 @@ find .. | jrep 'RER("(.*)python(.*)", "p[1]+\"🐍🐍\"+p[2]")'
 #### Cons
 * 👎 Needs `node` installed on the system. 👍 If you don't want to install node, an alternative is to use `docker`.
 #### 📌 Requirements
-* NodeJS (tested on node 12)
+* NodeJS (tested on node 12 and  node v16.15.0)
 
 ## 💻 Installation
 
