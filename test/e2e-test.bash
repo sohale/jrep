@@ -33,6 +33,7 @@ ls -alt test
 
 bash ./test/test-bash-target.bash
 bash test/test-last-non-empty.bash
+bash /test/test-more-macros.bash
 
 #################
 
