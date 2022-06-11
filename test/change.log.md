@@ -13,3 +13,5 @@ Added support for streams. Almost no tests though.
 * `0.5.0`: Fixes for stream: last chunk (outchunk) of the stream was losing. Some tests added.
 
 * `0.5.1`: Using lint `npm init @eslint/config` using `airbnb` style
+
+* `0.6.0`: Avoid using `eval`. Used `node:vm` instead to mitigate security vulnerability.
