@@ -1,5 +1,5 @@
 # jrep
-[![Version](https://img.shields.io/npm/v/jrep1.svg)](https://npmjs.org/package/jrep)
+[![Version](https://img.shields.io/npm/v/jrep1.svg)](https://npmjs.org/package/jrep1)
 [![CircleCI](https://circleci.com/gh/sohale/jrep/tree/main.svg?style=shield)](https://circleci.com/gh/sohale/jrep/tree/main)
 [![Downloads/week](https://img.shields.io/npm/dw/jrep.svg)](https://www.npmjs.com/package/jrep1)
 [![License](https://img.shields.io/npm/l/jrep1.svg)](https://github.com/sohale/jrep/blob/main/package.json)
